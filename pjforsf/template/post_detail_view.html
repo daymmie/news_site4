@@ -1,0 +1,26 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+All news and articles:
+{% endblock title %}
+{% block content %}
+   <h1>{{ post_detail.post_title|censorship }}</h1>
+   <hr>
+   {% if post_detail %}
+       <table>
+           <tr>
+               <td><h3>Text:</h3></td>
+               <td><h3>Date:</h3></td>
+           </tr>
+           <tr>
+               <td>{{ post_detail.post_title|censorship }}</td>
+               <td>{{ post_detail.post_date|date:'d M Y' }}</td>
+           </tr>
+       </table>
+        <h3>{{ post_detail.post_text|censorship }}</h3>
+   {% else %}
+       <h2>Nothing</h2>
+   {% endif %}
+{% endblock content %}
